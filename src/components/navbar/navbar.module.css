@@ -8,6 +8,7 @@
     position: sticky;
     top: 0;
     background-color: #F9F5EB;
+    z-index: 999;
 }
 
 .left {
@@ -19,7 +20,7 @@
 .left span {
     font-weight: bold;
     font-size: 20px;
-    color: black;
+    color: #002B5B;
 }
 
 .search {
@@ -56,4 +57,8 @@
     height: 30px;
     border-radius: 50%;
     object-fit: cover;
+}
+
+.user span {
+    color: #002B5B;
 }

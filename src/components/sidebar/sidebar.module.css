@@ -1,5 +1,5 @@
 .sidebar {
-    flex: 2;
+    flex: 1;
     position: sticky;
     top: 50px;
     height: calc(100vh - 50px);
@@ -19,7 +19,6 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-
 }
 
 .user {
@@ -38,12 +37,13 @@
 
 .user span {
     font-weight: 600;
+    color: #002B5B;
 }
 
 hr {
     border: none;
     height: 0.5px;
-    background-color: black;
+    background-color: lightgray;
 }
 
 .item {

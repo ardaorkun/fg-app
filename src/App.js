@@ -15,9 +15,9 @@ function App() {
     return (
       <div>
         <Navbar />
-        <div style={{ display: 'flex' }}>
+        <div style={{ display: 'flex', }}>
           <Sidebar />
-          <div style={{flex: 10}}>
+          <div style={{flex: 4}}>
             <Outlet />
           </div>
         </div>
