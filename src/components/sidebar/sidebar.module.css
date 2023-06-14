@@ -1,0 +1,53 @@
+.sidebar {
+    flex: 2;
+    position: sticky;
+    top: 50px;
+    height: calc(100vh - 50px);
+    overflow: scroll;
+    background-color: #F9F5EB;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.container {
+    padding: 20px;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.user img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user span {
+    font-weight: 600;
+}
+
+hr {
+    border: none;
+    height: 0.5px;
+    background-color: black;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
