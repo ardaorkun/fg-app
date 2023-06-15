@@ -35,11 +35,11 @@ const Login = () => {
             })
             let token = res.data.token
             let decoded = await jwtDecode(token)
-            let { id, role, username } = decoded.user
+            let { id, role, username, createdAt } = decoded.user
             cookies.set('jwt', token, {
                 expires: new Date(decoded.exp * 1000)
             })
-            setAuth({ userID: id, role: role, username: username, token: token })
+            setAuth({ userID: id, role: role, username: username, token: token, createdAt: createdAt })
             setEmail('')
             setPassword('')
             navigate('/')

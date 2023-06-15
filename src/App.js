@@ -16,7 +16,7 @@ function App() {
     return (
       <div>
         <Navbar />
-        <div style={{ display: 'flex', }}>
+        <div style={{ display: 'flex', backgroundColor: '#EDE7DE' }}>
           <Sidebar />
           <div style={{flex: 4}}>
             <Outlet />
