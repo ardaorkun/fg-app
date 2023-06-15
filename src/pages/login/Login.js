@@ -76,7 +76,7 @@ const Login = () => {
                             <label htmlFor={styles.check}>Remember me</label>
                         </section>
                         <section>
-                            <a href='#'>Forgot password</a>
+                            <a href='/register'>Forgot password</a>
                         </section>
                     </div>
                     <div className={styles.input_submit}>

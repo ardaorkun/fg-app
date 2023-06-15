@@ -6,10 +6,11 @@ import Profile from './pages/profile/Profile.js'
 import Admin from './pages/admin/Admin.js'
 import Navbar from './components/navbar/Navbar.js'
 import Sidebar from './components/sidebar/Sidebar.js'
+import AuthContext from './context/auth.js'
+import { useContext } from 'react'
 
 function App() {
-
-  const currentUser = true
+  const { auth } = useContext(AuthContext)
 
   const Layout = () => {
     return (
@@ -26,7 +27,7 @@ function App() {
   }
 
   const ProtectedRoute = ({children}) => {
-    if(!currentUser) return <Navigate to='/login'/>
+    if(!auth.token) return <Navigate to='/login'/>
     return children
   }
 

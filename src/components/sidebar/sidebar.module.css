@@ -51,3 +51,7 @@ hr {
     align-items: center;
     gap: 10px;
 }
+
+.item span {
+    cursor: pointer;
+}

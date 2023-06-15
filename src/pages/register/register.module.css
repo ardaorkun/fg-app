@@ -92,3 +92,9 @@
     color: black;
     font-weight: 600;
 }
+
+#error {
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+}

@@ -5,8 +5,14 @@ import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined'
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined'
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined'
 import Avatar from '../../assets/images/avatar.png'
+import AuthContext from '../../context/auth'
+import { useContext } from 'react'
 
 const Navbar = () => {
+
+    const { auth } = useContext(AuthContext)
+    
+    const username = auth.username
 
     return (
         <div className={styles.navbar}>
@@ -25,7 +31,7 @@ const Navbar = () => {
                 <PersonOutlineOutlinedIcon />
                 <div className={styles.user}>
                     <img src={Avatar} alt=''/>
-                    <span>dreamyy</span>
+                    <span>{username}</span>
                 </div>
             </div>
         </div>
