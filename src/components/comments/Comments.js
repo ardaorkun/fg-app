@@ -17,6 +17,11 @@ const Comments = ({ comments, postID, setCommentAmount, commentAmount }) => {
         const currentTime = new Date()
         const timeDiff = Math.abs(currentTime - createdTime)
         const hoursElapsed = Math.floor(timeDiff / (1000 * 60 * 60))
+      
+        if (hoursElapsed < 1) {
+          return 0
+        }
+      
         return hoursElapsed
     }
 
