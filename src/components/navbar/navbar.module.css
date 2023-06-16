@@ -61,4 +61,9 @@
 
 .user span {
     color: #002B5B;
+    cursor: pointer;
+}
+
+.user span:hover {
+    font-size: 101%;
 }

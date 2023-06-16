@@ -8,6 +8,7 @@ import Navbar from './components/navbar/Navbar.js'
 import Sidebar from './components/sidebar/Sidebar.js'
 import AuthContext from './context/auth.js'
 import { useContext } from 'react'
+import { IndexProvider } from './context/postsIndex.js'
 
 function App() {
   const { auth } = useContext(AuthContext)
@@ -38,7 +39,9 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/" element={
           <ProtectedRoute>
-            <Layout />
+            <IndexProvider>
+              <Layout />
+            </IndexProvider>
           </ProtectedRoute>}>
           <Route path="/" element={<Home />} />
           <Route path="/profile/:id" element={<Profile />} />

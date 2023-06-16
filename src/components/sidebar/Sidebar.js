@@ -8,6 +8,7 @@ import Cookies from 'universal-cookie'
 import AuthContext from '../../context/auth'
 import { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { IndexContext } from '../../context/postsIndex'
 
 const Sidebar = () => {
 
@@ -23,6 +24,13 @@ const Sidebar = () => {
         navigate('/login')
     }
 
+    const { setIndex } = useContext(IndexContext)
+
+    const handleMenuClick = (selectedIndex) => {
+        setIndex(selectedIndex)
+        navigate('/')
+    }
+
     return (
         <div className={styles.sidebar}>
             <div className={styles.container}>
@@ -34,15 +42,15 @@ const Sidebar = () => {
                     <hr/>
                     <div className={styles.item}>
                         <CottageOutlinedIcon />
-                        <span>Home</span>
+                        <span onClick={() => handleMenuClick(1)}>Home</span>
                     </div>
                     <div className={styles.item}>
                         <WhatshotOutlinedIcon />
-                        <span>Popular</span>
+                        <span onClick={() => handleMenuClick(2)}>Popular</span>
                     </div>
                     <div className={styles.item}>
                         <AccessTimeOutlinedIcon />
-                        <span>Newest</span>
+                        <span onClick={() => handleMenuClick(3)}>Newest</span>
                     </div>
                     <hr/>
                     <div className={styles.item}>

@@ -20,15 +20,15 @@ const Navbar = () => {
                 <Link to='/' style={{ textDecoration:"none" }}>
                 <span>Feedback Gamers</span>
                 </Link>
-                <HomeOutlinedIcon />
-                <DarkModeOutlinedIcon />
+                <HomeOutlinedIcon style={{ cursor:"pointer" }}/>
+                <DarkModeOutlinedIcon style={{ cursor:"pointer" }}/>
                 <div className={styles.search}>
                     <SearchOutlinedIcon />
                     <input type='text' placeholder='Search...'/>
                 </div>
             </div>
             <div className={styles.right}>
-                <PersonOutlineOutlinedIcon />
+                <PersonOutlineOutlinedIcon style={{ cursor:"pointer" }}/>
                 <div className={styles.user}>
                     <img src={Avatar} alt=''/>
                     <span>{username}</span>

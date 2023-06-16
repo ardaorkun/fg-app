@@ -38,6 +38,11 @@
 .user span {
     font-weight: 600;
     color: #002B5B;
+    cursor: pointer;
+}
+
+.user span:hover {
+    font-size: 101%;
 }
 
 hr {
@@ -54,4 +59,8 @@ hr {
 
 .item span {
     cursor: pointer;
+}
+
+.item span:hover {
+    font-size: 105%;
 }
