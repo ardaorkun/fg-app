@@ -26,7 +26,7 @@ const Profile = () => {
                 })
                 setUser(res.data)
             } catch (error) {
-                console.log(error)
+                console.log('ERROR: COULD NOT GET THE USER')
             }
         }
 

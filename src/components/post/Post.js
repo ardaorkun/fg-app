@@ -3,6 +3,7 @@ import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlin
 import FavoriteOutlinedIcon from '@mui/icons-material/FavoriteOutlined'
 import TextsmsOutlinedIcon from '@mui/icons-material/TextsmsOutlined'
 import MoreHorizOutlinedIcon from '@mui/icons-material/MoreHorizOutlined'
+import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined'
 import { Link } from 'react-router-dom'
 import Comments from '../comments/Comments'
 import { useContext, useState } from 'react'
@@ -40,7 +41,7 @@ const Post = ({post}) => {
                 setLikeAmount(--likeAmount)
             }
         } catch (error) {
-            console.log(error)
+            console.log('ERROR: COULD NOT LIKE OR DISLIKE')
         }
     }
 
@@ -54,6 +55,21 @@ const Post = ({post}) => {
     
     const hoursElapsed = calculateTimeElapsed()
 
+    const handleDelete = async (postID) => {
+        try {
+            const res = await axios.delete(`/post/delete/${postID}`, {
+                headers: {
+                    Authorization: `Bearer ${auth.token}`
+                }
+            })
+            if (res.status === 202) {
+                window.location.reload()
+            }
+        } catch (error) {
+            console.log('ERROR: COULD NOT DELETE THE POST')
+        }
+    }
+
     return (
         <div className={styles.post}>
             <div className={styles.container}>
@@ -66,11 +82,18 @@ const Post = ({post}) => {
                             <span className={styles.date}>{hoursElapsed} hours ago</span>
                         </div>
                     </div>
-                    <MoreHorizOutlinedIcon />
+                    <div>
+                        <MoreHorizOutlinedIcon />
+                        {post.author._id === auth.userID && (
+                            <div onClick={() => handleDelete(post._id)}>
+                                <DeleteOutlineOutlinedIcon style={{ cursor: "pointer" }} />
+                            </div>
+                        )}
+                    </div>
                 </div>
                 <div className={styles.content}>
                     <h3 style={{ marginBottom: '5px' }}>{post.title}</h3>
-                    <h5 style={{ marginBottom: '5px' }}>{post.game.name}</h5>
+                    <h5 style={{ marginBottom: '5px' }}>{post.game && post.game.name}</h5>
                     <p>{post.content}</p>
                 </div>
                 <div className={styles.info}>

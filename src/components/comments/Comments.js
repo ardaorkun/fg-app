@@ -42,7 +42,7 @@ const Comments = ({ comments, postID, setCommentAmount, commentAmount }) => {
             setCommentsArray((prevComments) => [...prevComments, newCommentData])
             setCommentAmount(++commentAmount)
         } catch (error) {
-            console.log(error)
+            console.log('ERROR: COULD NOT CREATE A COMMENT')
         }
     }
 
@@ -59,7 +59,7 @@ const Comments = ({ comments, postID, setCommentAmount, commentAmount }) => {
                 setCommentAmount(--commentAmount)
             }
         } catch (error) {
-            console.log(error)
+            console.log('COULD NOT DELETE THE COMMENT')
         }
     }
 
