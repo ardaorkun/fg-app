@@ -17,10 +17,12 @@ const Navbar = () => {
     return (
         <div className={styles.navbar}>
             <div className={styles.left}>
-                <Link to='/' style={{ textDecoration:"none" }}>
+                <Link to={`/`} style={{ textDecoration:"none" }}>
                 <span>Feedback Gamers</span>
                 </Link>
-                <HomeOutlinedIcon style={{ cursor:"pointer" }}/>
+                <Link to={`/`} style={{ color: "inherit", textDecoration: "none", lineHeight:"0" }}>
+                    <HomeOutlinedIcon style={{ cursor:"pointer", color:"black" }}/>
+                </Link>
                 <DarkModeOutlinedIcon style={{ cursor:"pointer" }}/>
                 <div className={styles.search}>
                     <SearchOutlinedIcon />
@@ -28,10 +30,14 @@ const Navbar = () => {
                 </div>
             </div>
             <div className={styles.right}>
-                <PersonOutlineOutlinedIcon style={{ cursor:"pointer" }}/>
+                <Link to={`/profile/${auth.userID}`} style={{ color: "inherit", textDecoration: "none", lineHeight:"0" }}>
+                    <PersonOutlineOutlinedIcon style={{ cursor:"pointer", color:"black" }}/>
+                </Link>
                 <div className={styles.user}>
                     <img src={Avatar} alt=''/>
+                    <Link to={`/profile/${auth.userID}`}>
                     <span>{username}</span>
+                    </Link>
                 </div>
             </div>
         </div>

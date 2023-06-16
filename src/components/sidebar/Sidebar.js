@@ -7,7 +7,7 @@ import Avatar from '../../assets/images/avatar.png'
 import Cookies from 'universal-cookie'
 import AuthContext from '../../context/auth'
 import { useContext } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { IndexContext } from '../../context/postsIndex'
 
 const Sidebar = () => {
@@ -37,7 +37,9 @@ const Sidebar = () => {
                 <div className={styles.menu}>
                     <div className={styles.user}>
                         <img src={Avatar} alt=''/>
+                        <Link to={`/profile/${auth.userID}`}>
                         <span>{username}</span>
+                        </Link>
                     </div>
                     <hr/>
                     <div className={styles.item}>

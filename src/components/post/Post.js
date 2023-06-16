@@ -13,10 +13,12 @@ const Post = ({post}) => {
 
     const { auth } = useContext(AuthContext)
 
+    const initialLike = post.likes.some((like) => like.username === auth.username)
+    const [isLiked, setIsLiked] = useState(initialLike)
+    let [likeAmount, setLikeAmount] = useState(post.likes.length)
+    
     const [commentOpen, setCommentOpen] = useState(false)
-    const [isLiked, setIsLiked] = useState()
-
-
+    let [commentAmount, setCommentAmount] = useState(post.comments.length)
 
     const handleClick = async () => {
         try {
@@ -26,16 +28,16 @@ const Post = ({post}) => {
                         Authorization: `Bearer ${auth.token}`
                     }
                 })
-                console.log('liked')
                 setIsLiked(true)
+                setLikeAmount(++likeAmount)
             } else {
                 await axios.put(`/post/dislike/${post._id}`, {}, {
                     headers: {
                         Authorization: `Bearer ${auth.token}`
                     }
                 })
-                console.log('disliked')
                 setIsLiked(false)
+                setLikeAmount(--likeAmount)
             }
         } catch (error) {
             console.log(error)
@@ -48,9 +50,9 @@ const Post = ({post}) => {
         const timeDiff = Math.abs(currentTime - createdAt)
         const hoursElapsed = Math.floor(timeDiff / (1000 * 60 * 60))
         return hoursElapsed
-      }
+    }
     
-      const hoursElapsed = calculateTimeElapsed()
+    const hoursElapsed = calculateTimeElapsed()
 
     return (
         <div className={styles.post}>
@@ -74,14 +76,14 @@ const Post = ({post}) => {
                 <div className={styles.info}>
                     <div className={styles.item} onClick={handleClick}>
                         {isLiked ? <FavoriteOutlinedIcon /> : <FavoriteBorderOutlinedIcon />}
-                        {post.likes.length} Likes
+                        {likeAmount} Likes
                     </div>
                     <div className={styles.item} onClick={() => setCommentOpen(!commentOpen)}>
                         <TextsmsOutlinedIcon />
-                        {post.comments.length} Comments
+                        {commentAmount} Comments
                     </div>
                 </div>
-                {commentOpen && <Comments />}
+                {commentOpen && <Comments comments={post.comments} postID={post._id} setCommentAmount={setCommentAmount} commentAmount={commentAmount}/>}
             </div>
         </div>
     )
